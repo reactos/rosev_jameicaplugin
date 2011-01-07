@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<plugin name="rosev_jameicaplugin" version="1.0"
+  class="org.reactos.ev.jameicaplugin.JameicaPlugin"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="http://www.willuhn.de/schema/jameica-plugin-1.0.xsd">
+
+  <description>ReactOS Deutschland e.V. Helper Plugin</description>
+  <homepage>http://ev.reactos.org</homepage>
+  <license>GPL v2 or any later version - http://www.gnu.org/copyleft/gpl.html</license>
+  
+  <classfinder>
+    <include>rosev_jameicaplugin\.jar</include>
+    <include>.*\.class</include>
+    <include>ext_.*\.jar</include>
+  </classfinder>
+  
+  <menu>
+    <item name="ReactOS Deutschland e.V. Helper Plugin">
+      <item name="About" action="org.reactos.ev.jameicaplugin.gui.action.About" />
+    </item>
+  </menu>
+  
+  <navigation>
+    <item name="ReactOS Deutschland e.V. Helper Plugin" icon-close="folder.png" icon-open="folder-open.png" action="org.reactos.ev.jameicaplugin.gui.action.Welcome">
+      <item name="Donation Helper" icon-close="preferences-system-windows.png" action="org.reactos.ev.jameicaplugin.gui.action.DonationHelper" />
+    </item>
+  </navigation>
+
+  <services>
+    <service name="database" depends="" autostart="true" class="org.reactos.ev.jameicaplugin.rmi.JameicaPluginDBService" />
+  </services>
+  
+  <requires jameica="1.10+">
+    <import plugin="jverein" version="1.4+" />
+  </requires>
+</plugin>

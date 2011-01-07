@@ -1,0 +1,19 @@
+<form>
+	<p>
+		<span color="header" font="header">Donation Helper</span>
+	</p>
+
+	<p>
+		This list shows all incoming donations derived from JVerein's booking list and the table containing additionally added ones.
+	</p>
+	
+	<p>
+		You can add additional donations independent of the booking list by using the button <b>New additional donation</b>. This can be
+		useful for listing donations to another ReactOS entity or donations older than the foundation.
+	</p>
+	
+	<p>
+		The checkbox <b>Show invalid donations only</b> shows all donations with an amount of 0. This can happen for example if a JVerein
+		booking has no donation amount or if it has been entered wrongly.
+	</p>
+</form>

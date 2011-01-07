@@ -1,0 +1,19 @@
+<form>
+	<p>
+		<span color="header" font="header">Spenden-Helfer</span>
+	</p>
+
+	<p>
+		In dieser Liste werden alle eingegangenen Spenden angezeigt, sowohl aus der Buchungsliste als auch zusätzlich hinzugefügte.
+	</p>
+	
+	<p>
+		Über den Button <b>Neue zusätzliche Spende</b> lassen sich weitere Spenden unabhängig von Kontobuchungen hinzufügen. Dies ist
+		beispielsweise zur Auflistung von Spenden an eine andere ReactOS-Organisation oder Spenden vor Gründung des Vereins sinnvoll.
+	</p>
+	
+	<p>
+		Die Checkbox <b>Nur ungültige Spenden anzeigen</b> zeigt alle Spenden mit einem Betrag von 0 an. Dies kann passieren, wenn z.B.
+		der Spendenbetrag in einer Spende aus JVerein nicht oder nicht richtig eingegeben wurde.
+	</p>
+</form>
