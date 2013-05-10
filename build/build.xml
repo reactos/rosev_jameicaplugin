@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project basedir=".." default="all" name="All">
+	<target name="init" description="inits the build">
+		<property name="build.dir" value="build" />
+		<loadproperties srcFile="${build.dir}/build.properties"/>
+	</target>
+
+	<target name="jar" description="generates the jar file">
+		<mkdir dir="${project.release}"/>
+		<mkdir dir="${project.zipdir}"/>
+		<tstamp />
+		<jar destfile="${project.zipdir}/${define.jarfilename}">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}"/>
+				<attribute name="Built-Date" value="${DSTAMP}" />
+				<attribute name="Implementation-Title" value="${define.pluginname}"/>
+				<attribute name="Class-Path" value="lang help lib"/>
+			</manifest>
+			<fileset dir="${class.dir}"/>
+		</jar>
+		<copy todir="${project.zipdir}" file="plugin.xml" />
+		<zip destfile="${project.release}/${project.zipfilename}">
+			<fileset dir="${project.release}">
+				<include name="${define.pluginname}"/>
+				<include name="${define.pluginname}/**"/>
+			</fileset>
+		</zip>
+	</target>
+
+	<target name="clean" description="cleanup">
+		<delete dir="${project.tmp}"/>
+	</target>
+
+	<target name="all" depends="init,jar,clean" description="build an official release" />
+</project>

@@ -41,7 +41,7 @@ public class DonationControl extends AbstractControl
 
         // Invalid donations have "amount" set to zero due to the way the VIEW
         // is defined
-        if (showInvalidCheckbox.isEnabled())
+        if ((Boolean) showInvalidCheckbox.getValue())
             donations.addFilter("amount = 0");
 
         if (donationList == null)
