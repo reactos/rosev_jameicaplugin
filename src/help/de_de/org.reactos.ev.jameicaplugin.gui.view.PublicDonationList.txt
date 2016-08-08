@@ -1,6 +1,6 @@
 <form>
 	<p>
-		<span color="header" font="header">Spenden-Helfer</span>
+		<span color="header" font="header">Öffentliche Spender-Liste</span>
 	</p>
 
 	<p>

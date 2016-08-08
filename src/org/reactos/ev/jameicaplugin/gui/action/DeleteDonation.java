@@ -1,7 +1,7 @@
 /*
  * PROJECT:    ReactOS Deutschland e.V. Helper Plugin
  * LICENSE:    GNU GPL v2 or any later version as published by the Free Software Foundation
- * COPYRIGHT:  Copyright 2010 ReactOS Deutschland e.V. <deutschland@reactos.org>
+ * COPYRIGHT:  Copyright 2010-2016 ReactOS Deutschland e.V. <deutschland@reactos.org>
  * AUTHORS:    Colin Finck <colin@reactos.org>
  */
 
@@ -14,7 +14,7 @@ import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import org.reactos.ev.jameicaplugin.JameicaPlugin;
-import org.reactos.ev.jameicaplugin.gui.view.DonationHelper;
+import org.reactos.ev.jameicaplugin.gui.view.PublicDonationList;
 import org.reactos.ev.jameicaplugin.rmi.AdditionalDonation;
 import org.reactos.ev.jameicaplugin.rmi.Donation;
 
@@ -66,7 +66,7 @@ public class DeleteDonation implements Action
 
             // Update the donation list manually as Jameica cannot know that
             // this affects all_donations.
-            DonationHelper view = (DonationHelper) GUI.getCurrentView();
+            PublicDonationList view = (PublicDonationList) GUI.getCurrentView();
             view.getDonationControl().getDonationList();
         }
         catch (Exception e)

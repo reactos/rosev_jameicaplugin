@@ -39,7 +39,7 @@ public class DonationDetail implements Action
                 // This is a donation added through a JVerein booking.
                 // Open it in JVerein's editor.
                 Buchung b = (Buchung) Einstellungen.getDBService().createObject(Buchung.class, d.getJVereinID().toString());
-                new BuchungAction().handleAction(b);
+                new BuchungAction(false).handleAction(b);
             }
         }
         catch (RemoteException e)

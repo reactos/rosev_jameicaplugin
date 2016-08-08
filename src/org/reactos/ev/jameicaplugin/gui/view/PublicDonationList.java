@@ -1,7 +1,7 @@
 /*
  * PROJECT:    ReactOS Deutschland e.V. Helper Plugin
  * LICENSE:    GNU GPL v2 or any later version as published by the Free Software Foundation
- * COPYRIGHT:  Copyright 2010 ReactOS Deutschland e.V. <deutschland@reactos.org>
+ * COPYRIGHT:  Copyright 2010-2016 ReactOS Deutschland e.V. <deutschland@reactos.org>
  * AUTHORS:    Colin Finck <colin@reactos.org>
  */
 
@@ -16,13 +16,13 @@ import org.reactos.ev.jameicaplugin.gui.action.HTMLOutput;
 import org.reactos.ev.jameicaplugin.gui.action.NewAdditionalDonation;
 import org.reactos.ev.jameicaplugin.gui.control.DonationControl;
 
-public class DonationHelper extends AbstractView
+public class PublicDonationList extends AbstractView
 {
     DonationControl control = null;
 
     public void bind() throws Exception
     {
-        GUI.getView().setTitle(JameicaPlugin.i18n().tr("Donation Helper"));
+        GUI.getView().setTitle(JameicaPlugin.i18n().tr("Public Donation List"));
 
         control = new DonationControl(this);
         control.getShowInvalidCheckbox().paint(this.getParent());
