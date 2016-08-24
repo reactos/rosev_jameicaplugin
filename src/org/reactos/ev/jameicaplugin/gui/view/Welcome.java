@@ -14,6 +14,7 @@ import org.reactos.ev.jameicaplugin.JameicaPlugin;
 
 public class Welcome extends AbstractView
 {
+    @Override
     public void bind() throws Exception
     {
         GUI.getView().setTitle("ReactOS Deutschland e.V. Helper Plugin");

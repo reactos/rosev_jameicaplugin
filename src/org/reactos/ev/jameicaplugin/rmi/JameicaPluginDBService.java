@@ -1,7 +1,7 @@
 /*
  * PROJECT:    ReactOS Deutschland e.V. Helper Plugin
  * LICENSE:    GNU GPL v2 or any later version as published by the Free Software Foundation
- * COPYRIGHT:  Copyright 2010 ReactOS Deutschland e.V. <deutschland@reactos.org>
+ * COPYRIGHT:  Copyright 2010-2016 ReactOS Deutschland e.V. <deutschland@reactos.org>
  * AUTHORS:    Colin Finck <colin@reactos.org>
  */
 
@@ -17,7 +17,7 @@ public interface JameicaPluginDBService extends DBService
 {
     public static final Settings settings = new Settings(JameicaPluginDBService.class);
     public static final DBSupportMySqlImpl jvereinMySqlService = new DBSupportMySqlImpl();
-    public static final int ourVersion = 1;
+    public static final int ourVersion = 2;
 
     /**
      * Checks the version of the database and compares it with DBVersion.

@@ -1,7 +1,7 @@
 /*
  * PROJECT:    ReactOS Deutschland e.V. Helper Plugin
  * LICENSE:    GNU GPL v2 or any later version as published by the Free Software Foundation
- * COPYRIGHT:  Copyright 2010 ReactOS Deutschland e.V. <deutschland@reactos.org>
+ * COPYRIGHT:  Copyright 2010-2016 ReactOS Deutschland e.V. <deutschland@reactos.org>
  * AUTHORS:    Colin Finck <colin@reactos.org>
  */
 
@@ -37,7 +37,7 @@ public class DonationControl extends AbstractControl
 
     public Part getDonationList() throws RemoteException
     {
-        DBIterator donations = JameicaPlugin.getDBService().createList(Donation.class);
+        DBIterator<Donation> donations = JameicaPlugin.getDBService().createList(Donation.class);
 
         // Invalid donations have "amount" set to zero due to the way the VIEW
         // is defined
@@ -52,7 +52,7 @@ public class DonationControl extends AbstractControl
             donationList.addColumn(JameicaPlugin.i18n().tr("Name"), "name");
             donationList.addColumn(JameicaPlugin.i18n().tr("Amount"), "amount", new CurrencyFormatter(
                     "", JameicaPlugin.currencyFormat));
-            donationList.addColumn(JameicaPlugin.i18n().tr("Currency"), "currency");
+            donationList.addColumn(JameicaPlugin.i18n().tr("Currency Code"), "currency");
             donationList.addColumn(JameicaPlugin.i18n().tr("Source"), "jverein_id", new Formatter()
             {
                 public String format(Object o)

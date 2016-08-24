@@ -1,0 +1,20 @@
+<form>
+	<p>
+		<span color="header" font="header">Spenden-Importierer</span>
+	</p>
+
+	<p>
+		Dieses Werkzeug ermöglicht es Ihnen, Spenden aus PayPal in JVerein's Buchhaltung zu importieren.
+	</p>
+	
+	<p>
+		Zuerst müssen Sie API-Zugangsdaten für Ihr PayPal-Konto anfordern und im Bereich <b>PayPal API-Zugangsdaten</b> eintragen.
+		Wenn Nicht-EUR-Spenden importiert werden, müssen Sie außerdem die monatlichen Umrechnungskurse über den Button <b>Umrechnungskurse</b> eintragen.
+	</p>
+	
+	<p>
+		Geben Sie dann Start- und Enddatum der zu importierenden Spenden ein und klicken Sie auf <b>PayPal-Transaktionen herunterladen</b>.
+		Überprüfen Sie die heruntergeladenen Spenden für jede Währung, ändern Sie deren Details und verschieben Sie diese zwischen beiden Tabellen nach Belieben.
+		Klicken Sie abschließend auf den Button <b>Spenden in JVerein importieren</b>. Dadurch werden alle Spenden aus der Spenden-Tabelle in JVerein importiert.
+	</p>
+</form>

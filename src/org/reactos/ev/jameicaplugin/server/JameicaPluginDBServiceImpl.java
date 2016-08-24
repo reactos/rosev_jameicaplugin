@@ -1,7 +1,7 @@
 /*
  * PROJECT:    ReactOS Deutschland e.V. Helper Plugin
  * LICENSE:    GNU GPL v2 or any later version as published by the Free Software Foundation
- * COPYRIGHT:  Copyright 2010 ReactOS Deutschland e.V. <deutschland@reactos.org>
+ * COPYRIGHT:  Copyright 2010-2016 ReactOS Deutschland e.V. <deutschland@reactos.org>
  * AUTHORS:    Colin Finck <colin@reactos.org>
  */
 
@@ -30,27 +30,38 @@ public class JameicaPluginDBServiceImpl extends DBServiceImpl implements Jameica
         this.setClassFinder(Application.getClassLoader().getClassFinder());
     }
 
+    @Override
+    public boolean getInsertWithID() throws RemoteException
+    {
+        return false;
+    }
+
+    @Override
     protected String getJdbcDriver() throws RemoteException
     {
         return "com.mysql.jdbc.Driver";
     }
 
+    @Override
     protected String getJdbcPassword() throws RemoteException
     {
         return jvereinMySqlService.getJdbcPassword();
     }
 
+    @Override
     protected String getJdbcUrl() throws RemoteException
     {
         // JDBC URL includes database name, so we need our own setting here.
         return settings.getString("jdbcurl", null);
     }
 
+    @Override
     protected String getJdbcUsername() throws RemoteException
     {
         return jvereinMySqlService.getJdbcUsername();
     }
 
+    @Override
     public void checkVersion() throws RemoteException, ApplicationException
     {
         try
@@ -64,7 +75,8 @@ public class JameicaPluginDBServiceImpl extends DBServiceImpl implements Jameica
                 int dbVersion = rs.getInt(1);
 
                 if (ourVersion != dbVersion)
-                    throw new ApplicationException("Version mismatch between program and database!");
+                    throw new ApplicationException(
+                            "Version mismatch between program and database!");
             }
         }
         catch (SQLException e)
@@ -73,9 +85,10 @@ public class JameicaPluginDBServiceImpl extends DBServiceImpl implements Jameica
         }
     }
 
+    @Override
     public int getTransactionIsolationLevel()
     {
-        // See database updates by others without issueing a COMMIT command.
+        // See database updates by others without issuing a COMMIT command.
         // Needed to see entries changed in JVerein.
         return Connection.TRANSACTION_READ_COMMITTED;
     }

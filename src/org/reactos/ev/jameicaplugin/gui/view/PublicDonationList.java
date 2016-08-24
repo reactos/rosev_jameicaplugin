@@ -9,8 +9,7 @@ package org.reactos.ev.jameicaplugin.gui.view;
 
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.GUI;
-import de.willuhn.jameica.gui.internal.buttons.Back;
-import de.willuhn.jameica.gui.util.ButtonArea;
+import de.willuhn.jameica.gui.parts.ButtonArea;
 import org.reactos.ev.jameicaplugin.JameicaPlugin;
 import org.reactos.ev.jameicaplugin.gui.action.HTMLOutput;
 import org.reactos.ev.jameicaplugin.gui.action.NewAdditionalDonation;
@@ -18,8 +17,9 @@ import org.reactos.ev.jameicaplugin.gui.control.DonationControl;
 
 public class PublicDonationList extends AbstractView
 {
-    DonationControl control = null;
+    DonationControl control;
 
+    @Override
     public void bind() throws Exception
     {
         GUI.getView().setTitle(JameicaPlugin.i18n().tr("Public Donation List"));
@@ -28,10 +28,10 @@ public class PublicDonationList extends AbstractView
         control.getShowInvalidCheckbox().paint(this.getParent());
         control.getDonationList().paint(this.getParent());
 
-        ButtonArea buttons = new ButtonArea(this.getParent(), 3);
-        buttons.addButton(new Back(false));
+        ButtonArea buttons = new ButtonArea();
         buttons.addButton(JameicaPlugin.i18n().tr("HTML Output"), new HTMLOutput(), null, false, "text-html.png");
         buttons.addButton(JameicaPlugin.i18n().tr("New additional donation"), new NewAdditionalDonation(), null, true, "document-new.png");
+        buttons.paint(this.getParent());
     }
 
     public DonationControl getDonationControl()

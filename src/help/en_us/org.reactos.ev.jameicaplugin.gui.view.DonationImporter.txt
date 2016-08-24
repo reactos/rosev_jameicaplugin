@@ -1,0 +1,20 @@
+<form>
+	<p>
+		<span color="header" font="header">Donation Importer</span>
+	</p>
+
+	<p>
+		This tool allows you to import donations from PayPal into JVerein's accounting.
+	</p>
+	
+	<p>
+		First request API Credentials for your PayPal account and enter the details at <b>PayPal API Credentials</b>.
+		When importing non-EUR donations, you also have to enter the monthly exchange rates using the <b>Exchange Rates</b> button.
+	</p>
+	
+	<p>
+		Then enter start and end date of the donations you want to import and click <b>Download PayPal Transactions</b>.
+		Check the downloaded donations for each currency, modify their details and move them between both tables at will.
+		Finally click the button <b>Import Donations in JVerein</b>. This will import all donations from the Donations table to JVerein.
+	</p>
+</form>

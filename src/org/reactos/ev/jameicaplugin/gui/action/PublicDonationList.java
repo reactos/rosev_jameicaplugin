@@ -13,6 +13,7 @@ import de.willuhn.util.ApplicationException;
 
 public class PublicDonationList implements Action
 {
+    @Override
     public void handleAction(Object context) throws ApplicationException
     {
         GUI.startView(org.reactos.ev.jameicaplugin.gui.view.PublicDonationList.class.getName(), null);

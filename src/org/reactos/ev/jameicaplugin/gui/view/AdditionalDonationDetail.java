@@ -1,7 +1,7 @@
 /*
  * PROJECT:    ReactOS Deutschland e.V. Helper Plugin
  * LICENSE:    GNU GPL v2 or any later version as published by the Free Software Foundation
- * COPYRIGHT:  Copyright 2010 ReactOS Deutschland e.V. <deutschland@reactos.org>
+ * COPYRIGHT:  Copyright 2010-2016 ReactOS Deutschland e.V. <deutschland@reactos.org>
  * AUTHORS:    Colin Finck <colin@reactos.org>
  */
 
@@ -10,8 +10,7 @@ package org.reactos.ev.jameicaplugin.gui.view;
 import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
-import de.willuhn.jameica.gui.internal.buttons.Back;
-import de.willuhn.jameica.gui.util.ButtonArea;
+import de.willuhn.jameica.gui.parts.ButtonArea;
 import de.willuhn.jameica.gui.util.LabelGroup;
 import de.willuhn.jameica.gui.util.ScrolledContainer;
 import org.reactos.ev.jameicaplugin.JameicaPlugin;
@@ -20,6 +19,7 @@ import org.reactos.ev.jameicaplugin.gui.control.AdditionalDonationControl;
 
 public class AdditionalDonationDetail extends AbstractView
 {
+    @Override
     public void bind() throws Exception
     {
         GUI.getView().setTitle(JameicaPlugin.i18n().tr("Additional donation"));
@@ -34,11 +34,10 @@ public class AdditionalDonationDetail extends AbstractView
         group.addLabelPair(JameicaPlugin.i18n().tr("Name"), control.getName());
         group.addLabelPair(JameicaPlugin.i18n().tr("Anonymous"), control.getAnonymous());
         group.addLabelPair(JameicaPlugin.i18n().tr("Amount"), control.getAmount());
-        group.addLabelPair(JameicaPlugin.i18n().tr("Currency"), control.getCurrency());
+        group.addLabelPair(JameicaPlugin.i18n().tr("Currency Code"), control.getCurrency());
         group.addLabelPair(JameicaPlugin.i18n().tr("Comment"), control.getComment());
 
-        ButtonArea buttons = new ButtonArea(getParent(), 3);
-        buttons.addButton(new Back(false));
+        de.willuhn.jameica.gui.parts.ButtonArea buttons = new ButtonArea();
         buttons.addButton(JameicaPlugin.i18n().tr("New additional donation"), new NewAdditionalDonation(), null, true, "document-new.png");
         buttons.addButton(JameicaPlugin.i18n().tr("Save"), new Action()
         {
@@ -47,5 +46,6 @@ public class AdditionalDonationDetail extends AbstractView
                 control.handleStore();
             }
         }, null, true, "document-save.png");
+        buttons.paint(getParent());
     }
 }

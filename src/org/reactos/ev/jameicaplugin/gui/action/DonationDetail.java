@@ -1,7 +1,7 @@
 /*
  * PROJECT:    ReactOS Deutschland e.V. Helper Plugin
  * LICENSE:    GNU GPL v2 or any later version as published by the Free Software Foundation
- * COPYRIGHT:  Copyright 2010 ReactOS Deutschland e.V. <deutschland@reactos.org>
+ * COPYRIGHT:  Copyright 2010-2016 ReactOS Deutschland e.V. <deutschland@reactos.org>
  * AUTHORS:    Colin Finck <colin@reactos.org>
  */
 
@@ -12,6 +12,7 @@ import de.jost_net.JVerein.gui.action.BuchungAction;
 import de.jost_net.JVerein.rmi.Buchung;
 import de.willuhn.jameica.gui.Action;
 import de.willuhn.jameica.gui.GUI;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import java.rmi.RemoteException;
 import org.reactos.ev.jameicaplugin.JameicaPlugin;
@@ -21,6 +22,7 @@ import org.reactos.ev.jameicaplugin.rmi.Donation;
 
 public class DonationDetail implements Action
 {
+    @Override
     public void handleAction(Object context) throws ApplicationException
     {
         Donation d = (Donation) context;
@@ -44,7 +46,7 @@ public class DonationDetail implements Action
         }
         catch (RemoteException e)
         {
-            throw new ApplicationException("Error while handling the donation action!");
+            Logger.error("Error while handling the donation action", e);
         }
     }
 }

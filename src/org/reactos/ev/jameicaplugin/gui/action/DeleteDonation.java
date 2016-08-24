@@ -20,6 +20,7 @@ import org.reactos.ev.jameicaplugin.rmi.Donation;
 
 public class DeleteDonation implements Action
 {
+    @Override
     public void handleAction(Object context) throws ApplicationException
     {
         Donation[] donations = null;

@@ -1,7 +1,7 @@
 /*
  * PROJECT:    ReactOS Deutschland e.V. Helper Plugin
  * LICENSE:    GNU GPL v2 or any later version as published by the Free Software Foundation
- * COPYRIGHT:  Copyright 2010 ReactOS Deutschland e.V. <deutschland@reactos.org>
+ * COPYRIGHT:  Copyright 2010-2016 ReactOS Deutschland e.V. <deutschland@reactos.org>
  * AUTHORS:    Colin Finck <colin@reactos.org>
  */
 
@@ -10,6 +10,7 @@ package org.reactos.ev.jameicaplugin;
 import de.willuhn.datasource.rmi.DBService;
 import de.willuhn.jameica.plugin.AbstractPlugin;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
 import de.willuhn.util.I18N;
 import java.rmi.RemoteException;
@@ -22,6 +23,7 @@ import org.reactos.ev.jameicaplugin.server.JameicaPluginDBServiceImpl;
 public class JameicaPlugin extends AbstractPlugin
 {
     public static final DecimalFormat currencyFormat = (DecimalFormat) DecimalFormat.getInstance(Application.getConfig().getLocale());
+    public static final DecimalFormat currencyFormatUS = (DecimalFormat) DecimalFormat.getInstance(Locale.US);
     public static final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT, Application.getConfig().getLocale());
     private static DBService db;
     private static I18N i18n;
@@ -30,6 +32,8 @@ public class JameicaPlugin extends AbstractPlugin
     {
         currencyFormat.setMinimumFractionDigits(2);
         currencyFormat.setMaximumFractionDigits(2);
+        currencyFormatUS.setMinimumFractionDigits(2);
+        currencyFormatUS.setMaximumFractionDigits(2);
     }
 
     public JameicaPlugin()
@@ -39,6 +43,7 @@ public class JameicaPlugin extends AbstractPlugin
                 JameicaPlugin.class.getClassLoader());
     }
 
+    @Override
     public void init() throws ApplicationException
     {
         // Only check the version on the server if we're in client/server mode
@@ -53,13 +58,9 @@ public class JameicaPlugin extends AbstractPlugin
             service.start();
             service.checkVersion();
         }
-        catch (ApplicationException e)
-        {
-            throw e;
-        }
         catch (RemoteException e)
         {
-            throw new ApplicationException("Error initializing the database", e);
+            Logger.error("Error initializing the database", e);
         }
         finally
         {
@@ -71,7 +72,7 @@ public class JameicaPlugin extends AbstractPlugin
                 }
                 catch (RemoteException e)
                 {
-                    throw new ApplicationException("Error closing the database", e);
+                    Logger.error("Error closing the database", e);
                 }
             }
         }

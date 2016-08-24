@@ -16,12 +16,23 @@ CREATE TABLE `additional_donations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+-- Table "exchange_rates"
+CREATE TABLE `exchange_rates` (
+	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `year` int(4) unsigned NOT NULL,
+  `month` int(2) unsigned NOT NULL,
+  `currency_code` char(3) NOT NULL,
+  `exchange_rate_to_eur` double unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 -- Table "version"
 CREATE TABLE `version` (
   `version` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `version` VALUES (1);
+INSERT INTO `version` VALUES (2);
 
 
 -- Stored function "get_jverein_amount"

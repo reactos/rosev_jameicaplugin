@@ -23,6 +23,7 @@
   
   <navigation>
     <item name="ReactOS Deutschland e.V. Helper Plugin" icon-close="folder.png" icon-open="folder-open.png" action="org.reactos.ev.jameicaplugin.gui.action.Welcome">
+      <item name="Donation Importer" icon-close="document-save.png" action="org.reactos.ev.jameicaplugin.gui.action.DonationImporter" />
       <item name="Public Donation List" icon-close="preferences-system-windows.png" action="org.reactos.ev.jameicaplugin.gui.action.PublicDonationList" />
     </item>
   </navigation>
