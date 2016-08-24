@@ -134,10 +134,10 @@ public class TransactionTabControl extends AbstractControl
     private Label addTotalLabel(Composite composite, String caption)
     {
         final GridData leftGridData = new GridData();
-        leftGridData.widthHint = 200;
+        leftGridData.widthHint = 190;
 
         final GridData rightGridData = new GridData(GridData.HORIZONTAL_ALIGN_END);
-        rightGridData.widthHint = 50;
+        rightGridData.widthHint = 70;
 
         final Label captionLabel = new Label(composite, SWT.NONE);
         captionLabel.setLayoutData(leftGridData);

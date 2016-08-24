@@ -19,6 +19,10 @@
 			</manifest>
 			<fileset dir="${class.dir}"/>
 		</jar>
+		<mkdir dir="${project.zipdir}/lib" />
+		<copy todir="${project.zipdir}/lib">
+			<fileset dir="${lib.dir}" />
+		</copy>
 		<copy todir="${project.zipdir}" file="plugin.xml" />
 		<zip destfile="${project.release}/${project.zipfilename}">
 			<fileset dir="${project.release}">
