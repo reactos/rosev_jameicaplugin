@@ -13,6 +13,7 @@ import de.willuhn.logging.Logger;
 import java.rmi.RemoteException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import org.reactos.ev.jameicaplugin.JameicaPlugin;
 import org.reactos.ev.jameicaplugin.rmi.Donation;
@@ -56,6 +57,12 @@ public class HTMLFormatter implements Formatter
 
         try
         {
+            // Output donations of the last 5 years.
+            final Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.YEAR, cal.get(Calendar.YEAR) - 5);
+            cal.set(Calendar.DAY_OF_YEAR, 1);
+            donationList.addFilter("date >= ?", cal.getTime());
+
             donationList.setOrder("ORDER BY date DESC");
 
             while (donationList.hasNext())
