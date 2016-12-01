@@ -70,6 +70,7 @@ public class HTMLOutput extends AbstractDialog<Object>
                 fd.setFileName("html-output.txt");
                 fd.setFilterExtensions(new String[]
                 { "*.txt" });
+                fd.setFilterPath(System.getProperty("user.home"));
                 fd.setOverwrite(false);
                 final String f = fd.open();
                 if (f == null || f.length() == 0)
