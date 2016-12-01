@@ -169,7 +169,8 @@ public class Transaction implements GenericObject
             name = unidecode(name);
 
         // Capitalize each word of the name.
-        this.name = WordUtils.capitalizeFully(name);
+        this.name = WordUtils.capitalizeFully(name, new char[]
+        { ' ', '-', '.', ',' });
     }
 
     public void setAnonymous(Boolean anonymous)

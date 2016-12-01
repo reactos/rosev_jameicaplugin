@@ -14,12 +14,15 @@ import de.willuhn.jameica.gui.dialogs.AbstractDialog;
 import de.willuhn.jameica.gui.parts.ButtonArea;
 import de.willuhn.jameica.gui.util.Color;
 import de.willuhn.util.ApplicationException;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.Clipboard;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Text;
 import org.reactos.ev.jameicaplugin.JameicaPlugin;
 import org.reactos.ev.jameicaplugin.formatter.HTMLFormatter;
@@ -47,18 +50,45 @@ public class HTMLOutput extends AbstractDialog<Object>
         text.setText(formatter.format(donationList));
 
         ButtonArea buttons = new ButtonArea();
-        buttons.addButton("   " + JameicaPlugin.i18n().tr("Copy to clipboard") + "   ", new Action()
+        buttons.addButton("   " + JameicaPlugin.i18n().tr("Copy") + "   ", new Action()
         {
+            @Override
             public void handleAction(Object context) throws ApplicationException
             {
-                Clipboard cb = new Clipboard(GUI.getDisplay());
+                final Clipboard cb = new Clipboard(GUI.getDisplay());
                 cb.setContents(new Object[]
                 { text.getText() }, new Transfer[]
                 { TextTransfer.getInstance() });
             }
         });
+        buttons.addButton("   " + JameicaPlugin.i18n().tr("Save") + "...   ", new Action()
+        {
+            @Override
+            public void handleAction(Object context) throws ApplicationException
+            {
+                final FileDialog fd = new FileDialog(GUI.getShell(), SWT.SAVE);
+                fd.setFileName("html-output.txt");
+                fd.setFilterExtensions(new String[]
+                { "*.txt" });
+                fd.setOverwrite(false);
+                final String f = fd.open();
+                if (f == null || f.length() == 0)
+                    return;
+
+                try
+                {
+                    final PrintWriter pw = new PrintWriter(f);
+                    pw.write(text.getText());
+                    pw.close();
+                }
+                catch (FileNotFoundException e)
+                {
+                }
+            }
+        });
         buttons.addButton("   " + JameicaPlugin.i18n().tr("Close") + "   ", new Action()
         {
+            @Override
             public void handleAction(Object context) throws ApplicationException
             {
                 close();
