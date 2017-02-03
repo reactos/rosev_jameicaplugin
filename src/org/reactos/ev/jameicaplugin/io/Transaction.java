@@ -1,19 +1,16 @@
 /*
  * PROJECT:    ReactOS Deutschland e.V. Helper Plugin
  * LICENSE:    GNU GPL v2 or any later version as published by the Free Software Foundation
- * COPYRIGHT:  Copyright 2016 ReactOS Deutschland e.V. <deutschland@reactos.org>
+ * COPYRIGHT:  Copyright 2016-2017 ReactOS Deutschland e.V. <deutschland@reactos.org>
  * AUTHORS:    Colin Finck <colin@reactos.org>
  */
 
 package org.reactos.ev.jameicaplugin.io;
 
-import static gcardone.junidecode.Junidecode.unidecode;
-
 import de.willuhn.datasource.GenericObject;
-import java.nio.charset.Charset;
 import java.rmi.RemoteException;
 import java.util.Date;
-import org.apache.commons.lang.WordUtils;
+import org.reactos.ev.jameicaplugin.formatter.NameFormatter;
 
 public class Transaction implements GenericObject
 {
@@ -155,22 +152,10 @@ public class Transaction implements GenericObject
         return "id";
     }
 
-    /**
-     * Converts the name into a readable ISO-8859-1 version.
-     * 
-     * @param name
-     *        The name for this transaction.
-     */
     public void setName(String name)
     {
-        // Perform a transliteration if the name cannot be represented in
-        // ISO-8859-1.
-        if (!Charset.forName("ISO_8859_1").newEncoder().canEncode(name))
-            name = unidecode(name);
-
-        // Capitalize each word of the name.
-        this.name = WordUtils.capitalizeFully(name, new char[]
-        { ' ', '-', '.', ',' });
+        NameFormatter formatter = new NameFormatter();
+        this.name = formatter.format(name);
     }
 
     public void setAnonymous(Boolean anonymous)
