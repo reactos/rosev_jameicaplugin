@@ -11,6 +11,7 @@ import de.willuhn.jameica.gui.AbstractView;
 import de.willuhn.jameica.gui.GUI;
 import de.willuhn.jameica.gui.parts.ButtonArea;
 import org.reactos.ev.jameicaplugin.JameicaPlugin;
+import org.reactos.ev.jameicaplugin.gui.action.CSVOutput;
 import org.reactos.ev.jameicaplugin.gui.action.HTMLOutput;
 import org.reactos.ev.jameicaplugin.gui.action.NewAdditionalDonation;
 import org.reactos.ev.jameicaplugin.gui.control.DonationControl;
@@ -29,6 +30,7 @@ public class PublicDonationList extends AbstractView
         control.getDonationList().paint(this.getParent());
 
         ButtonArea buttons = new ButtonArea();
+        buttons.addButton(JameicaPlugin.i18n().tr("CSV Output"), new CSVOutput(), null, false, "x-office-spreadsheet.png");
         buttons.addButton(JameicaPlugin.i18n().tr("HTML Output"), new HTMLOutput(), null, false, "text-html.png");
         buttons.addButton(JameicaPlugin.i18n().tr("New additional donation"), new NewAdditionalDonation(), null, true, "document-new.png");
         buttons.paint(this.getParent());
